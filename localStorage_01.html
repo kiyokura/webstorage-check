@@ -5,13 +5,20 @@
     <title></title>
 </head>
 <body>
+  <span id="updateCheck"></span>
   このタブでセットした値：<span id="txtValue"></span><br />
   <script type="text/javascript">
     var value = (new Date()).toUTCString();
     localStorage.setItem("local-storage-test",value);
     document.getElementById("txtValue").innerText = value;
 
+    window.addEventListener("storage", function (e) {
+      document.getElementById("updateCheck").innerText = "別タブで更新された";
+    }, false);
+
+
     function comp() {
+      document.getElementById("updateCheck").innerText = "aaaa";
       var lsValue = localStorage.getItem("local-storage-test");
       var buff = 'メモリ上の値：' + value + '\n' +
                  'localStorage上の値：' + lsValue;
@@ -21,9 +28,18 @@
         alert('★★★別のタブまたはウィンドウの検出★★★\n新しいタブが開かれました！！！\n（メモリ上の値とlocalStorageの値が一致しない）\n\n' + buff);
       }
     }
+
+    function renewValue() {
+      var value1 = (new Date()).toUTCString();
+      localStorage.setItem("local-storage-test", value1);
+    }
   </script>
 
   <input type="button" value="check" onclick="comp()" />
+
+  <br />
+
+  <input type="button" value="update" onclick="renewValue()" />
 
 </body>
 </html>
