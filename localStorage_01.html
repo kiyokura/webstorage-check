@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+  このタブでセットした値：<span id="txtValue"></span><br />
+  <script type="text/javascript">
+    var value = (new Date()).toUTCString();
+    localStorage.setItem("local-storage-test",value);
+    document.getElementById("txtValue").innerText = value;
+
+    function comp() {
+      var lsValue = localStorage.getItem("local-storage-test");
+      var buff = 'メモリ上の値：' + value + '\n' +
+                 'localStorage上の値：' + lsValue;
+      if (value === lsValue) {
+        alert('新しいタブは開かれてないはず\n（メモリ上の値とlocalStorageの値が一致）\n\n' + buff);
+      } else {
+        alert('★★★別のタブまたはウィンドウの検出★★★\n新しいタブが開かれました！！！\n（メモリ上の値とlocalStorageの値が一致しない）\n\n' + buff);
+      }
+    }
+  </script>
+
+  <input type="button" value="check" onclick="comp()" />
+
+</body>
+</html>

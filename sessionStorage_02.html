@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+</head>
+<body>
+  sessionStorageから『<span id="span01"></span>』を取得しました。
+  <script type="text/javascript">
+    document.getElementById("span01").innerText = sessionStorage.getItem("hoge");
+  </script>
+  <br />
+  ※「タブを複製」で別タブに開くと、W3C勧告の仕様ではsessionStorageの値が複製されるため、正しく値がセットされる（『XXXX』が表示される）
+  → IE11の場合は複製されず、nullとなる
+
+</body>
+</html>

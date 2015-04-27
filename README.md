@@ -1,2 +1,0 @@
-# webstorage-check
-webstorage-check
